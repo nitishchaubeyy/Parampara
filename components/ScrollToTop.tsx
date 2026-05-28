@@ -1,9 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
-export function ScrollToTop() {
+export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     const toggleVisibility = () => {
